@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.codepath.simpletodo.EditItemActivity">
+
+    <EditText
+        android:id="@+id/etItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="85dp"
+        android:onClick="onSave"
+        android:layout_below="@+id/etItem"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Item Below: "
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp" />
+
+</RelativeLayout>
