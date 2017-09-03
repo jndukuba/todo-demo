@@ -4,7 +4,7 @@
 
 Submitted by: John Ndukuba
 
-Time spent: 1 hour spent in total
+Time spent: 3 hour spent in total
 
 ## User Stories
 
