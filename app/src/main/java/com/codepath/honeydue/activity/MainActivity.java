@@ -1,24 +1,24 @@
-package com.codepath.simpletodo;
+package com.codepath.honeydue.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import org.apache.commons.io.FileUtils;
+import com.codepath.honeydue.R;
+import com.codepath.honeydue.adapter.HoneyDueItemsAdapter;
+import com.codepath.honeydue.storage.HoneyDueItem;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<String> items;
-    ArrayAdapter<String> itemsAdapter;
+    List<HoneyDueItem> items;
+    HoneyDueItemsAdapter itemsAdapter;
     ListView lvItems;
 
     private final int REQUEST_CODE = 22;
@@ -29,30 +29,35 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         lvItems = (ListView) findViewById(R.id.lvItems);
         readItems();
-        itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
+        itemsAdapter = new HoneyDueItemsAdapter(this, items);
         lvItems.setAdapter(itemsAdapter);
         setupListViewListener();
     }
 
     public void onAddItem(View view) {
+
         EditText etNewItem = (EditText) findViewById(R.id.etNewItem);
-        String itemText = etNewItem.getText().toString();
-        itemsAdapter.add(itemText);
-        etNewItem.setText("");
-        writeItems();
+        HoneyDueItem item = new HoneyDueItem();
+
+        item.setName(etNewItem.getText().toString());
+
+        if( item.save() ) {
+            etNewItem.setText("");
+            itemsAdapter.add(item);
+        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if( resultCode == RESULT_OK && requestCode == REQUEST_CODE ) {
 
-            String item = data.getStringExtra( "item" );
-            int position = data.getIntExtra( "itemPos", 0 );
+            HoneyDueItem item = (HoneyDueItem) data.getSerializableExtra( "item" );
+            int position = data.getIntExtra( "itemPos", -1 );
 
             if( position > -1 ) {
+                item.save();
                 items.set(position, item);
                 itemsAdapter.notifyDataSetChanged();
-                writeItems();
             }
 
         }
@@ -64,9 +69,10 @@ public class MainActivity extends AppCompatActivity {
                 new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        HoneyDueItem item = items.get(i);
                         items.remove(i);
                         itemsAdapter.notifyDataSetChanged();
-                        writeItems();
+                        item.delete();
                         return true;
                     }
                 });
@@ -86,23 +92,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void readItems() {
-        File filesDir = getFilesDir();
-        File todoFile = new File( filesDir, "todo.txt" );
-        try {
-            items = new ArrayList<>(FileUtils.readLines(todoFile));
-        } catch (IOException e ){
-            items = new ArrayList<>();
-        }
-    }
-
-    private void writeItems() {
-        File filesDir = getFilesDir();
-        File todoFile = new File( filesDir, "todo.txt" );
-        try {
-            FileUtils.writeLines( todoFile, items );
-        } catch (IOException e){
-            e.printStackTrace();
-        }
+        items = SQLite.select().from(HoneyDueItem.class).queryList();
     }
 
 }

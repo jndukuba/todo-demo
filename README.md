@@ -14,6 +14,10 @@ The following **required** functionality is completed:
 * [x] User can **tap a todo item in the list and bring up an edit screen for the todo item** and then have any changes to the text reflected in the todo list.
 * [x] User can **persist todo items** and retrieve them properly on app restart
 
+The following **optional** features are implemented:
+
+* [x] Persist the todo items [into SQLite](http://guides.codepath.com/android/Persisting-Data-to-the-Device#sqlite) instead of a text file
+
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
@@ -33,7 +37,7 @@ Android's approach to layouts reminds me of Flex's XML-based layouts. The abilit
 
 **Question 2:** "Take a moment to reflect on the `ArrayAdapter` used in your pre-work. How would you describe an adapter in this context and what is its function in Android? Why do you think the adapter is important? Explain the purpose of the `convertView` in the `getView` method of the `ArrayAdapter`."
 
-**Answer:** The adapter seems like a proxy to different types of collections. I believe it's important since it can provide a common interface to a collection while allowing a developer to switch collection implementations based on application need. `convertView` makes it possible to reuse a View that's already been instantiated rather than to create a new View every time one is needed. 
+**Answer:** The adapter is a proxy to different types of collections. I believe it's important since it can provide a common interface to a collection while allowing a developer to switch collection implementations based on application need. `convertView` makes it possible to reuse a View that's already been instantiated rather than to create a new View every time one is needed and to use a use a custom view for complex data types. 
 
 ## Notes
 

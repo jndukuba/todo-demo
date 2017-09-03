@@ -1,4 +1,4 @@
-package com.codepath.simpletodo;
+package com.codepath.honeydue;
 
 import org.junit.Test;
 

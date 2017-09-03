@@ -1,33 +1,40 @@
-package com.codepath.simpletodo;
+package com.codepath.honeydue.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+
+import com.codepath.honeydue.R;
+import com.codepath.honeydue.storage.HoneyDueItem;
 
 public class EditItemActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_item);
 
-        String item = getIntent().getStringExtra("item");
+        HoneyDueItem item = (HoneyDueItem) getIntent().getSerializableExtra("item");
         EditText etItem = (EditText) findViewById(R.id.etItem);
 
-        etItem.setText(item);
-        etItem.setSelection(item.length());
+        etItem.setText(item.getName());
+        etItem.setSelection(item.getName().length());
 
     }
 
     public void onSave(View view) {
 
         EditText etItem = (EditText) findViewById(R.id.etItem);
+        HoneyDueItem item = (HoneyDueItem) getIntent().getSerializableExtra("item");
         int position = getIntent().getIntExtra("itemPos", -1);
         Intent data = new Intent();
 
-        data.putExtra("item", etItem.getText().toString());
+        item.setName(etItem.getText().toString());
+
+        data.putExtra("item", item);
         data.putExtra("itemPos", position);
 
         setResult(RESULT_OK, data);
