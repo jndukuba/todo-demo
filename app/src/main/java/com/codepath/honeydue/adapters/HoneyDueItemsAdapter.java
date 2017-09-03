@@ -1,4 +1,4 @@
-package com.codepath.honeydue.adapter;
+package com.codepath.honeydue.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.codepath.honeydue.R;
-import com.codepath.honeydue.storage.HoneyDueItem;
+import com.codepath.honeydue.models.HoneyDueItem;
 
 import java.util.List;
 

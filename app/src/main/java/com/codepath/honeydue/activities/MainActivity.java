@@ -1,4 +1,4 @@
-package com.codepath.honeydue.activity;
+package com.codepath.honeydue.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.codepath.honeydue.R;
-import com.codepath.honeydue.adapter.HoneyDueItemsAdapter;
-import com.codepath.honeydue.storage.HoneyDueItem;
+import com.codepath.honeydue.adapters.HoneyDueItemsAdapter;
+import com.codepath.honeydue.models.HoneyDueItem;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.List;

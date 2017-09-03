@@ -1,4 +1,4 @@
-package com.codepath.honeydue.storage;
+package com.codepath.honeydue.models;
 
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
