@@ -17,6 +17,7 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 * [x] Persist the todo items [into SQLite](http://guides.codepath.com/android/Persisting-Data-to-the-Device#sqlite) instead of a text file
+* [x] Add support for selecting the priority of each todo item (and display in listview item)
 
 ## Video Walkthrough
 
