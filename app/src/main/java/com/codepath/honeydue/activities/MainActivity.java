@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
     HoneyDueItemsAdapter itemsAdapter;
     ListView lvItems;
 
-    private final int REQUEST_CODE = 22;
+    private final int ADD_REQUEST_CODE = 1;
+    private final int EDIT_REQUEST_CODE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,29 +36,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onAddItem(View view) {
-
-        EditText etNewItem = (EditText) findViewById(R.id.etNewItem);
-        HoneyDueItem item = new HoneyDueItem();
-
-        item.setName(etNewItem.getText().toString());
-
-        if( item.save() ) {
-            etNewItem.setText("");
-            itemsAdapter.add(item);
-        }
+        Intent addItemIntent = new Intent(MainActivity.this, NewItemActivity.class);
+        startActivityForResult(addItemIntent, ADD_REQUEST_CODE);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if( resultCode == RESULT_OK && requestCode == REQUEST_CODE ) {
+        if( resultCode == RESULT_OK ) {
 
-            HoneyDueItem item = (HoneyDueItem) data.getSerializableExtra( "item" );
-            int position = data.getIntExtra( "itemPos", -1 );
+            HoneyDueItem item = (HoneyDueItem) data.getSerializableExtra("item");
 
-            if( position > -1 ) {
-                item.save();
-                items.set(position, item);
-                itemsAdapter.notifyDataSetChanged();
+            switch (requestCode) {
+
+                case ADD_REQUEST_CODE:
+
+                    item.save();
+                    itemsAdapter.add(item);
+                    itemsAdapter.notifyDataSetChanged();
+                    break;
+
+                case EDIT_REQUEST_CODE:
+
+                    int position = data.getIntExtra("itemPos", -1);
+
+                    if (position > -1) {
+                        item.save();
+                        items.set(position, item);
+                        itemsAdapter.notifyDataSetChanged();
+                    }
+
+                    break;
+
             }
 
         }
@@ -84,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                         Intent editIntent = new Intent(MainActivity.this, EditItemActivity.class);
                         editIntent.putExtra("item", items.get(i));
                         editIntent.putExtra("itemPos", i);
-                        startActivityForResult(editIntent, REQUEST_CODE);
+                        startActivityForResult(editIntent, EDIT_REQUEST_CODE);
                     }
                 }
         );

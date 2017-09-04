@@ -13,12 +13,19 @@ import java.io.Serializable;
 @Table(database = HoneyDueDatabase.class)
 public class HoneyDueItem extends BaseModel implements Serializable {
 
+    public enum Priority {
+        LOW, MEDIUM, HIGH
+    }
+
     @Column
     @PrimaryKey
     private int id;
 
     @Column
     private String name;
+
+    @Column
+    private Priority priority;
 
     public int getId() {
         return id;
@@ -35,4 +42,13 @@ public class HoneyDueItem extends BaseModel implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+    
 }

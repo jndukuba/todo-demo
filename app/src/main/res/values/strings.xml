@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Honey Due</string>
+    <string-array name="priorities_array">
+        <item>LOW</item>
+        <item>MEDIUM</item>
+        <item>HIGH</item>
+    </string-array>
 </resources>

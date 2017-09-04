@@ -11,14 +11,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
+        android:layout_marginTop="11dp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:id="@+id/saveButton"
@@ -28,9 +26,10 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="85dp"
         android:onClick="onSave"
-        android:layout_below="@+id/etItem"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView" />
+        android:layout_below="@+id/editItemPrioritySpinner"
+        android:layout_alignLeft="@+id/editItemPrioritySpinner"
+        android:layout_alignStart="@+id/editItemPrioritySpinner"
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -43,5 +42,34 @@
         android:layout_marginLeft="15dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="13dp"
+        android:text="Name:" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etItem"
+        android:layout_alignStart="@+id/etItem"
+        android:layout_below="@+id/etItem"
+        android:layout_marginTop="17dp"
+        android:text="Priority:" />
+
+    <Spinner
+        android:id="@+id/editItemPrioritySpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView5"
+        android:layout_alignStart="@+id/textView5"
+        android:layout_below="@+id/textView5"
+        android:layout_marginTop="18dp" />
 
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.codepath.honeydue.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 
 import com.codepath.honeydue.R;
 import com.codepath.honeydue.models.HoneyDueItem;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -35,6 +38,22 @@ public class HoneyDueItemsAdapter extends ArrayAdapter<HoneyDueItem> {
         }
 
         TextView nameTextView = (TextView) convertView.findViewById(R.id.nameTextView);
+        TextView priorityTextView = (TextView) convertView.findViewById(R.id.priorityTextView);
+        int priorityColor = Color.WHITE;
+
+        switch (item.getPriority()){
+            case LOW:
+                priorityColor = Color.GREEN;
+                break;
+            case MEDIUM:
+                priorityColor = Color.YELLOW;
+                break;
+            case HIGH:
+                priorityColor = Color.RED;
+                break;
+        }
+
+        priorityTextView.setBackgroundColor(priorityColor);
 
         nameTextView.setText(item.getName());
 
