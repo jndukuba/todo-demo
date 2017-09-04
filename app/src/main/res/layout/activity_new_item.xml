@@ -4,21 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
     tools:context="com.codepath.honeydue.activities.NewItemActivity">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="18dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="17dp"
         android:text="What's next?"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/nameTextView"
@@ -34,41 +35,59 @@
         android:id="@+id/nameEditTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/nameTextView"
-        android:layout_alignStart="@+id/nameTextView"
-        android:layout_below="@+id/nameTextView"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="" />
+        android:text=""
+        android:layout_below="@+id/nameTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/nameEditTextView"
-        android:layout_alignStart="@+id/nameEditTextView"
+        android:layout_marginTop="17dp"
+        android:text="Priority:"
         android:layout_below="@+id/nameEditTextView"
-        android:layout_marginTop="25dp"
-        android:text="Priority:" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Spinner
         android:id="@+id/newItemPrioritySpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_alignStart="@+id/textView4"
+        android:layout_marginTop="23dp"
         android:layout_below="@+id/textView4"
-        android:layout_marginTop="10dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
-        android:id="@+id/saveButton"
+        android:id="@+id/editItemSaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/nameEditTextView"
-        android:layout_alignRight="@+id/nameEditTextView"
-        android:layout_below="@+id/newItemPrioritySpinner"
         android:layout_marginTop="16dp"
         android:text="Save"
-        android:onClick="onSave"/>
+        android:onClick="onSave"
+        android:layout_marginRight="17dp"
+        android:layout_marginEnd="17dp"
+        android:layout_below="@+id/newItemPrioritySpinner"
+        android:layout_toLeftOf="@+id/newItemCancelButton"
+        android:layout_toStartOf="@+id/newItemCancelButton" />
+
+    <Button
+        android:id="@+id/newItemCancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editItemSaveButton"
+        android:layout_alignBottom="@+id/editItemSaveButton"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:onClick="onCancel"
+        android:text="Cancel" />
 
 </RelativeLayout>

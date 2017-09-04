@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
     tools:context="com.codepath.honeydue.activities.EditItemActivity">
 
     <EditText
@@ -19,17 +23,19 @@
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:id="@+id/saveButton"
+        android:id="@+id/editItemSaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="85dp"
         android:onClick="onSave"
+        android:layout_marginTop="22dp"
         android:layout_below="@+id/editItemPrioritySpinner"
-        android:layout_alignLeft="@+id/editItemPrioritySpinner"
-        android:layout_alignStart="@+id/editItemPrioritySpinner"
-        android:layout_marginTop="20dp" />
+        android:layout_toLeftOf="@+id/editItemCancelButton"
+        android:layout_toStartOf="@+id/editItemCancelButton"
+        android:layout_marginRight="17dp"
+        android:layout_marginEnd="17dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -38,10 +44,7 @@
         android:text="Edit Item Below: "
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/textView3"
@@ -70,6 +73,18 @@
         android:layout_alignLeft="@+id/textView5"
         android:layout_alignStart="@+id/textView5"
         android:layout_below="@+id/textView5"
-        android:layout_marginTop="18dp" />
+        android:layout_marginTop="18dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/editItemCancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/editItemSaveButton"
+        android:onClick="onCancel"
+        android:text="Cancel" />
 
 </RelativeLayout>

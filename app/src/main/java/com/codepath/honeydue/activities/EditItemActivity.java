@@ -66,4 +66,9 @@ public class EditItemActivity extends AppCompatActivity implements AdapterView.O
 
     }
 
+    public void onCancel(View view) {
+        setResult(RESULT_CANCELED);
+        this.finish();
+    }
+
 }

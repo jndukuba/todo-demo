@@ -59,4 +59,9 @@ public class NewItemActivity extends AppCompatActivity implements AdapterView.On
 
     }
 
+    public void onCancel(View view) {
+        setResult(RESULT_CANCELED);
+        this.finish();
+    }
+
 }
